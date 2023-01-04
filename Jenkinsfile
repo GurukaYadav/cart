@@ -1,6 +1,5 @@
-
 @Library('jenkins-shared-library@main') _
-
+env.COMPONENT='cart'
 nodejs()
 
 

@@ -1,26 +1,26 @@
-@Library('jenkins-shared-library@main') _
-
-nodejs()
-
-
-
-
-
-
-
-
-// pipeline {
-//   agent any
+// @Library('jenkins-shared-library@main') _
 //
-//   stages {
-//     stage('Download Dependencies') {
-//       steps {
-//         sh 'npm install'
-//       }
-//     }
-//
-//   }
-//
-//
-// }
+// nodejs()
+
+
+
+
+
+
+
+
+pipeline {
+  agent any
+
+  stages {
+    stage('Download Dependencies') {
+      steps {
+        sh 'npm install'
+      }
+    }
+
+  }
+
+
+}
 

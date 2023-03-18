@@ -1,7 +1,7 @@
 module "immutable-app-ami" {
   source = "github.com/GurukaYadav/immutable-app-ami.git"
   COMPONENT = "cart"
-  APP_VERSION = "var.APP_VERSION"
+  APP_VERSION = var.APP_VERSION
 }
 
 variable "APP_VERSION" {}

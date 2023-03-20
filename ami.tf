@@ -13,7 +13,7 @@ provider "aws" {
 terraform {
   backend "s3" {
     bucket = "terraform-sfiles"
-    key    = "terraform/immutable/ami/cart/terraform.tfstate"
+    key    = "ami/cart/terraform.tfstate"
     region = "us-east-1"
   }
 }

@@ -1,4 +1,4 @@
-module "ami" {
+module "immutable-app-ami" {
   source = "github.com/GurukaYadav/immutable-app-ami"
   COMPONENT = "cart"
   APP_VERSION = var.APP_VERSION

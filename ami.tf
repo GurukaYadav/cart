@@ -1,10 +1,10 @@
 module "immutable-app-ami" {
   source = "github.com/GurukaYadav/immutable-app-ami"
   COMPONENT = "cart"
-  APP_VERSION = var.TAG_NAME
+  APP_VERSION = var.APP_VERSION
 }
 
-variable "TAG_NAME" {}
+variable "APP_VERSION" {}
 
 provider "aws" {
   region = "us-east-1"

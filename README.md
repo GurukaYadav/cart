@@ -24,10 +24,10 @@ So let's switch to the `roboshop` user and run the following commands.
 $ curl -s -L -o /tmp/cart.zip "https://github.com/roboshop-devops-project/cart/archive/main.zip"
 $ cd /home/roboshop
 $ unzip /tmp/cart.zip
-$ mv cart-main cart
+$ mv rt-main cart
 $ cd cart
 $ npm install 
-```
+```ca
 
 Now, lets set up the service with systemctl.
 

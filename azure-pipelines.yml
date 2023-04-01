@@ -1,0 +1,11 @@
+trigger:
+  - main
+
+pool: slave
+
+steps:
+  - script: ls -l
+    displayName: 'Run a one-line script'
+
+  - script: hostname
+    displayName: 'Run a multi-line script'

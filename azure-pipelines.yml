@@ -7,6 +7,5 @@ steps:
   - script: npm install
     displayName: 'Install nodejs dependencies'
 
-steps:
   - script: docker build -t cart
     displayName: 'Build docker image'

@@ -1,17 +1,40 @@
-trigger:
-  - main
+#trigger:
+#  - main
+#
+#pool: slave
+#
+#steps:
+#  - script: npm install
+#    displayName: 'Install nodejs dependencies'
+#
+#  - script: docker build -t cart .
+#    displayName: 'Build docker image'
+#
+#  - script: |
+#      aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 124374336606.dkr.ecr.us-east-1.amazonaws.com
+#      docker tag cart:latest 124374336606.dkr.ecr.us-east-1.amazonaws.com/cart:latest
+#      docker push 124374336606.dkr.ecr.us-east-1.amazonaws.com/cart:latest
+#    displayName: 'Docker push image to ECR'
 
-pool: slave
+As we have format of pipeline->stages->stage->steps in jenkins, we can also write the azure-pipelines.yml file in below format
 
-steps:
-  - script: npm install
-    displayName: 'Install nodejs dependencies'
+stages:
+  - stage: CI
+    jobs:
+      - job: CI
+        steps:
+          - script: npm install
+            displayName: 'Install nodejs dependencies'
+            script: docker build -t cart .
+            displayName: 'Build docker image'
 
-  - script: docker build -t cart .
-    displayName: 'Build docker image'
 
-  - script: |
-      aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 124374336606.dkr.ecr.us-east-1.amazonaws.com
-      docker tag cart:latest 124374336606.dkr.ecr.us-east-1.amazonaws.com/cart:latest
-      docker push 124374336606.dkr.ecr.us-east-1.amazonaws.com/cart:latest
-    displayName: 'Docker push image to ECR'
+  - stage: DockerImageUpload
+    jobs:
+      - job: ImageUpload
+        steps:
+          - script: |
+              aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 124374336606.dkr.ecr.us-east-1.amazonaws.com
+              docker tag cart:latest 124374336606.dkr.ecr.us-east-1.amazonaws.com/cart:latest
+              docker push 124374336606.dkr.ecr.us-east-1.amazonaws.com/cart:latest
+            displayName: 'Docker push image to ECR'

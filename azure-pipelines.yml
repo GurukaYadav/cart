@@ -53,7 +53,7 @@ trigger:
 pool: slave
 
 variables:
-  COMPONENT: 'cart'
+  COMPONENT: cart
 
 resources:
   repositories:

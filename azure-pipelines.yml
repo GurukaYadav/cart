@@ -28,9 +28,9 @@ stages:
     jobs:
       - job: CI
         steps:
-          - script: npm install
+          - script: "npm install"
             displayName: Install nodejs dependencies
-            script: docker build -t cart .
+            script: "docker build -t cart ."
             displayName: Build docker image
 
 

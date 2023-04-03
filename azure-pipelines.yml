@@ -63,5 +63,5 @@ resources:
       endpoint: GurukaYadav
 
 
-jobs:
+stages:
   - template: nodejs.yml@templates

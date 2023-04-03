@@ -18,6 +18,11 @@
 
 #As we have format of pipeline->stages->stage->steps in jenkins, we can also write the azure-pipelines.yml file in below format
 
+trigger:
+  - main
+
+pool: slave
+
 stages:
   - stage: CI
     jobs:

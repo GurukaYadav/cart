@@ -17,29 +17,45 @@
 #    displayName: 'Docker push image to ECR'
 
 #As we have format of pipeline->stages->stage->steps in jenkins, we can also write the azure-pipelines.yml file in below format
+#
+#trigger:
+#  - main
+#
+#pool: slave
+#
+#stages:
+#- stage: CI
+#  jobs:
+#  - job: CI
+#    steps:
+#    - script: "npm install"
+#      displayName: Install nodejs dependencies
+#    - script: "docker build -t cart ."
+#      displayName: Build docker image
+#
+#
+#- stage: DockerImageUpload
+#  condition: succeeded()
+#  jobs:
+#  - job: ImageUpload
+#    steps:
+#    - script: |
+#        aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 124374336606.dkr.ecr.us-east-1.amazonaws.com
+#        docker tag cart:latest 124374336606.dkr.ecr.us-east-1.amazonaws.com/cart:latest
+#        docker push 124374336606.dkr.ecr.us-east-1.amazonaws.com/cart:latest
+#      displayName: Docker push image to ECR
 
-trigger:
-  - main
+#here by default the stages in azure pipeline runs parallel(may run).So, to avoid this we need to flow control the stage by placing some "condition"
 
-pool: slave
+parameters:
+  - COMPONENT: cart
 
-stages:
-- stage: CI
-  jobs:
-  - job: CI
-    steps:
-    - script: "npm install"
-      displayName: Install nodejs dependencies
-    - script: "docker build -t cart ."
-      displayName: Build docker image
+resources:
+  repositories:
+    -
+    - repository: templates
+      type: github
+      name: GurukaYadav/roboshop-azure-devops-templates
 
-
-- stage: DockerImageUpload
-  jobs:
-  - job: ImageUpload
-    steps:
-    - script: |
-        aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 124374336606.dkr.ecr.us-east-1.amazonaws.com
-        docker tag cart:latest 124374336606.dkr.ecr.us-east-1.amazonaws.com/cart:latest
-        docker push 124374336606.dkr.ecr.us-east-1.amazonaws.com/cart:latest
-      displayName: Docker push image to ECR
+jobs:
+  - template: nodejs.yml@templates

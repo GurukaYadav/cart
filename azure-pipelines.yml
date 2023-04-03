@@ -24,22 +24,22 @@ trigger:
 pool: slave
 
 stages:
-  - stage: CI
-    jobs:
-      - job: CI
-        steps:
-          - script: "npm install"
-            displayName: Install nodejs dependencies
-            script: "docker build -t cart ."
-            displayName: Build docker image
+- stage: CI
+  jobs:
+  - job: CI
+    steps:
+    - script: "npm install"
+      displayName: Install nodejs dependencies
+    - script: "docker build -t cart ."
+      displayName: Build docker image
 
 
-  - stage: DockerImageUpload
-    jobs:
-      - job: ImageUpload
-        steps:
-          - script: |
-              aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 124374336606.dkr.ecr.us-east-1.amazonaws.com
-              docker tag cart:latest 124374336606.dkr.ecr.us-east-1.amazonaws.com/cart:latest
-              docker push 124374336606.dkr.ecr.us-east-1.amazonaws.com/cart:latest
-            displayName: Docker push image to ECR
+- stage: DockerImageUpload
+  jobs:
+  - job: ImageUpload
+    steps:
+    - script: |
+        aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 124374336606.dkr.ecr.us-east-1.amazonaws.com
+        docker tag cart:latest 124374336606.dkr.ecr.us-east-1.amazonaws.com/cart:latest
+        docker push 124374336606.dkr.ecr.us-east-1.amazonaws.com/cart:latest
+      displayName: Docker push image to ECR

@@ -1,1 +1,5 @@
 appName: cart
+service:
+  targetPort: 8080
+
+

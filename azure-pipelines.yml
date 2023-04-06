@@ -47,8 +47,9 @@
 
 #here by default the stages in azure pipeline runs parallel(may run).So, to avoid this we need to flow control the stage by placing some "condition"
 
-trigger:
-  - main
+#Here we are commenting the trigger section, as we are spme changes to helm.yml. So, for every change it triggers and psuh an image to ECR
+#trigger:
+#  - main
 
 pool: slave
 

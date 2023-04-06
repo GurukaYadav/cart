@@ -1,5 +1,6 @@
 appName: cart
 service:
+  type: ClusterIP
   targetPort: 8080
 
 

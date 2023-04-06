@@ -47,8 +47,8 @@
 
 #here by default the stages in azure pipeline runs parallel(may run).So, to avoid this we need to flow control the stage by placing some "condition"
 
-trigger:
-  - main
+#trigger:
+#  - main
 
 pool: slave
 

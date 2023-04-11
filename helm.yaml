@@ -9,6 +9,6 @@ configMap:
   data:
     REDIS_HOST: roboshop-prod-elasticache-cluster.vdztlq.0001.use1.cache.amazonaws.com
     CATALOGUE_HOST: catalogue
-    CATALOGUE_PORT: 8080
+    CATALOGUE_PORT: "8080"
 
 

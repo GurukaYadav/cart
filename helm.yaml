@@ -4,5 +4,11 @@ service:
   port: 8080
 ingress:
   enabled: false
+configMap:
+  enabled: true
+  data:
+    REDIS_HOST: roboshop-prod-elasticache-cluster.vdztlq.0001.use1.cache.amazonaws.com
+    CATALOGUE_HOST: catalogue
+    CATALOGUE_PORT: 8080
 
 

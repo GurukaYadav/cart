@@ -12,5 +12,17 @@ configMap:
     CATALOGUE_PORT: "8080"
 externalSecret:
   enabled: false
+resources:
+  requests:
+    memory: "250Mi"
+    cpu: "500m"
+  limits:
+    memory: "500Mi"
+    cpu: "750m"
+hpa:
+  min: 2
+  max: 10
+  avgCpu: 80
+
 
 

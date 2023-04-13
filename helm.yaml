@@ -14,11 +14,11 @@ externalSecret:
   enabled: false
 resources:
   requests:
-    memory: "250Mi"
-    cpu: "500m"
+    memory: 250Mi
+    cpu: 500m
   limits:
-    memory: "500Mi"
-    cpu: "750m"
+    memory: 500Mi
+    cpu: 750m
 hpa:
   min: 2
   max: 10

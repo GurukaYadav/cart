@@ -23,6 +23,18 @@ hpa:
   min: 2
   max: 10
   cpuAvg: 80
+probes:
+  liveness:
+    port: 8080
+    initialDelaySeconds: 5
+    periodSeconds: 10
+  readiness:
+    port: 8080
+    initialDelaySeconds: 5
+    periodSeconds: 10
+
+
+
 
 
 

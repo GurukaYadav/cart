@@ -22,7 +22,7 @@ resources:
 hpa:
   min: 2
   max: 10
-  avgCpu: 80
+  cpuAvg: 80
 
 
 

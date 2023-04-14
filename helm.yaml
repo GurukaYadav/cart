@@ -1,17 +1,23 @@
 appName: cart
+
 service:
   type: ClusterIP
   port: 8080
+
 ingress:
   enabled: false
+
 configMap:
   enabled: true
   data:
     REDIS_HOST: roboshop-prod-elasticache-cluster.vdztlq.0001.use1.cache.amazonaws.com
     CATALOGUE_HOST: catalogue
     CATALOGUE_PORT: "8080"
+#while you give number as a  value(key: value) in configmaps, it should be double quoted
+
 externalSecret:
   enabled: false
+
 resources:
   requests:
     memory: "250Mi"
@@ -19,22 +25,23 @@ resources:
   limits:
     memory: "500Mi"
     cpu: "750m"
+
 hpa:
   min: 2
   max: 10
   cpuAvg: 80
+
 probes:
+  path: /health
+  port: 8080
   liveness:
-    port: 8080
     initialDelaySeconds: 5
     periodSeconds: 10
   readiness:
-    port: 8080
     initialDelaySeconds: 5
     periodSeconds: 10
 
 
 
-
-
+#since livness and readiness probes are using the same container with same port, we are making the code dry here
 
